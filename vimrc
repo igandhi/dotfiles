@@ -7,6 +7,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'powerline/powerline'
 Plugin 'klen/python-mode'
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 " Automatic reloading of .vimrc
@@ -15,6 +17,7 @@ autocmd! bufwritepost .vimrc source %
 " Better copy/paste
 set pastetoggle=<F2>
 set clipboard=unnamed
+set laststatus=2
 
 " Mouse and backspace
 set mouse=a
@@ -64,6 +67,36 @@ set incsearch
 set ignorecase
 set smartcase
 
+" python-mode settings
+let g:pymode_rope=1
+let g:pymode_doc=1
+let g:pymode_doc_key='K'
+let g:pymode_lint=1
+let g:pymode_link_checker="pyflakes,pep8"
+let g:pymode_link_write=1
+let g:pymode_virtualenv=1
+let g:pymode_breakpoint=1
+let g:pymode_breakpoint_bind='<leader>b'
+let g:pymode_syntax=1
+let g:pymode_syntax_all=1
+let g:pymode_syntax_indent_errors=g:pymode_syntax_all
+let g:pymode_syntax_space_errors=g:pymode_syntax_all
+let g:pymode_folding=0
+
+" NERDTree
+nnoremap <Leader>ne :NERDTree<CR>
+" close NERDTree after a file is opened
+let g:NERDTreeQuitOnOpen=1
+" show hidden files in NERDTree
+let g:NERDTreeShowHidden=1
+
+" fuzzyfinder (CtrlP) plugin
+nmap <silent> <leader>t :CtrlP<cr>
+let g:ctrlp_map='<leader>t'
+
+" vim air-line
+let g:airline#extensions#tabline#enabled = 1
+
 " Disable arrow keys. hjkl FTW
 inoremap <Up>       <NOP>
 inoremap <Down>     <NOP>
@@ -73,3 +106,12 @@ nnoremap <Up>       <NOP>
 nnoremap <Down>     <NOP>
 nnoremap <Left>     <NOP>
 nnoremap <Right>    <NOP>
+
+""""""""""""""""""""""""""""""""""""
+" key mappings
+"""""""""""""""""""""""""""""""""""""
+" edit ~/.vimrc
+map <leader>ev :e! ~/.vimrc<cr>
+
+" switch betweenc current and last buffer
+nmap <leader>. <c-^>
